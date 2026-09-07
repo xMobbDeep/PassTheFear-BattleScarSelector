@@ -24,6 +24,10 @@ The official BepInEx IL2CPP guide explains the x64 installation and first-run ge
 
 The selector is a separate Windows program, but it must run beside the plugin DLL so it can save `BattleScarSelector.cfg` in the same plugin directory. The plugin itself is loaded by BepInEx when the game starts.
 
+## For players
+
+Download the latest release and copy `BattleScarSelector.exe` and `PassTheFearBattleScarSelector.dll` into `BepInEx/plugins/PassTheFearBattleScarSelector` in your game folder. The release executable already contains the Battle Scar catalogue, descriptions, IDs, and icons, so no separate asset files are needed. Install BepInEx IL2CPP x64 first, then run the selector, choose three Blessings and three Curses, and press Start before launching the game.
+
 ## Build from source
 
 1. Install BepInEx in your own game copy and run the game once so its IL2CPP interop files exist.
