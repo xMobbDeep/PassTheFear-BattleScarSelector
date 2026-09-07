@@ -7,12 +7,17 @@ The repository is organized for players first. The ready-to-use files are in [`d
 ## Quick start for players
 
 1. Install **BepInEx 6 IL2CPP x64** in your own *Pass The Fear* folder, then launch the game once so BepInEx can finish its first-run setup.[official BepInEx IL2CPP](https://builds.bepinex.dev/projects/bepinex_be)
+
 2. Download these two files from [`dist/`](dist):
    - [`BattleScarSelector.exe`](dist/BattleScarSelector.exe)
    - [`PassTheFearBattleScarSelector.dll`](dist/PassTheFearBattleScarSelector.dll)
+   
 3. Create the folder `BepInEx/plugins/PassTheFearBattleScarSelector` inside the game folder and place both files there.
+
 4. Run `BattleScarSelector.exe` from that folder while the game is closed.
+
 5. Select three Blessings and three Curses, then press **Start**. The selector saves the loadout beside the plugin DLL.
+
 6. Launch the game normally. BepInEx reads the saved loadout at the beginning of the next run.
 
 The selector does not launch the game for you. The executable already contains the catalogue, IDs, descriptions, and icons, so no separate data or icon files are needed.
@@ -39,11 +44,6 @@ For the prebuilt player package:
 - BepInEx 6 IL2CPP x64 installed in that game folder.
 - .NET Framework 4.8 or later for the standalone selector.
 
-## Optional: build from source
-
-Source builds are intended for contributors who want to update the catalogue, artwork, or plugin. Follow [`developer/README.md`](developer/README.md) and provide inputs from your own game copy. The build script embeds those local assets into a new selector executable and writes the two player files to `dist/`.
-
-The repository intentionally does not include the game executable, `GameAssembly.dll`, BepInEx files, generated IL2CPP interop assemblies, or extracted game data. Those remain in each contributor's own local game installation; see [`NOTICE.md`](NOTICE.md) for ownership and third-party notices.
 
 ## Troubleshooting
 
@@ -52,6 +52,3 @@ The repository intentionally does not include the game executable, `GameAssembly
 - **The selector cannot find the plugin folder:** do not run the executable from a separate download folder; keep it beside `PassTheFearBattleScarSelector.dll`.
 - **The selector does not open:** install or repair .NET Framework 4.8, then try again while the game is closed.
 
-## License
-
-The project source is released under the MIT License. Game code and artwork remain the property of their respective owners. See [`NOTICE.md`](NOTICE.md) for the BepInEx notice and asset details.
