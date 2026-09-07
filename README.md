@@ -6,7 +6,7 @@ The repository is organized for players first. The ready-to-use files are in [`d
 
 ## Quick start for players
 
-1. Install **BepInEx 6 IL2CPP x64** in your own Windows copy of *Pass The Fear*, then launch the game once so BepInEx can finish its first-run setup. The [official BepInEx IL2CPP guide](https://github.com/BepInEx/bepinex-docs/blob/master/articles/user_guide/installation/unity_il2cpp.md) covers this step.
+1. Install **BepInEx 6 IL2CPP x64** in your own *Pass The Fear* folder, then launch the game once so BepInEx can finish its first-run setup.[official BepInEx IL2CPP](https://builds.bepinex.dev/projects/bepinex_be)
 2. Download these two files from [`dist/`](dist):
    - [`BattleScarSelector.exe`](dist/BattleScarSelector.exe)
    - [`PassTheFearBattleScarSelector.dll`](dist/PassTheFearBattleScarSelector.dll)
@@ -36,7 +36,6 @@ The selector does not launch the game for you. The executable already contains t
 For the prebuilt player package:
 
 - Windows x64.
-- A legally installed Windows x64 copy of *Pass The Fear*.
 - BepInEx 6 IL2CPP x64 installed in that game folder.
 - .NET Framework 4.8 or later for the standalone selector.
 
