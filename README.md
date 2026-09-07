@@ -1,6 +1,6 @@
 # Pass The Fear Battle Scar Selector
 
-Choose a complete Battle Scar loadout for *Pass The Fear* before a run. The Windows selector presents every available Blessing and Curse with its icon and effect text, then the companion BepInEx plugin applies the six selected IDs when the next run starts.
+Choose a complete Battle Scar loadout for *Pass The Fear* before a run. The selector presents every available Blessing and Curse with its icon and effect text, then the companion BepInEx plugin applies the six selected IDs when the next run starts.
 
 The repository is organized for players first. The ready-to-use files are in [`dist/`](dist); source and rebuild material is kept under [`developer/`](developer).
 
