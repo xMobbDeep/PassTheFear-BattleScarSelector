@@ -26,7 +26,7 @@ The selector is a separate Windows program, but it must run beside the plugin DL
 
 ## For players
 
-Download the latest release and copy `BattleScarSelector.exe` and `PassTheFearBattleScarSelector.dll` into `BepInEx/plugins/PassTheFearBattleScarSelector` in your game folder. The release executable already contains the Battle Scar catalogue, descriptions, IDs, and icons, so no separate asset files are needed. Install BepInEx IL2CPP x64 first, then run the selector, choose three Blessings and three Curses, and press Start before launching the game.
+Download the prebuilt files from [`dist/`](dist) and copy `BattleScarSelector.exe` and `PassTheFearBattleScarSelector.dll` into `BepInEx/plugins/PassTheFearBattleScarSelector` in your game folder. The executable already contains the Battle Scar catalogue, descriptions, IDs, and icons, so no separate asset files are needed. Install BepInEx IL2CPP x64 first, then run the selector, choose three Blessings and three Curses, and press Start before launching the game.
 
 ## Build from source
 
