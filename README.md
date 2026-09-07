@@ -15,49 +15,21 @@ The repository is organized for players first. The ready-to-use files are in [`d
 5. Select three Blessings and three Curses, then press **Start**. The selector saves the loadout beside the plugin DLL.
 6. Launch the game normally. BepInEx reads the saved loadout at the beginning of the next run.
 
-The selector does not launch the game for you. The executable already contains the catalogue, IDs, descriptions, and icons, so players do not need to download a separate icons folder, CSV, or TSV file.
+The selector does not launch the game for you. The executable already contains the catalogue, IDs, descriptions, and icons, so no separate data or icon files are needed.
 
-## The three screens
+## Screenshots
 
 ### Home screen
 
-The entrance screen uses the game's artwork as its background and places three centered game-style buttons in a simple flow:
+![Home screen](docs/screenshots/home.png)
 
-- **Blessings** opens the Blessings selection page.
-- **Curses** opens the Curses selection page.
-- **Start** stays locked until exactly three Blessings and three Curses have been selected.
+### Blessings screen
 
-Returning from either selection page keeps the choices visible to the selector. When Start is pressed, the six IDs are written to `BattleScarSelector.cfg`; the game is then started separately so the plugin can apply them.
+![Blessings screen](docs/screenshots/blessings.png)
 
-### Blessings page
+### Curses screen
 
-The Blessings page uses a black background and shows the complete Blessing icon catalogue. Moving the pointer over an icon highlights it and shows the game's four green directional arrows. The details panel on the right displays the icon, name, and positive effect text. A left click selects or removes a Blessing, with a maximum of three selections; selected icons keep a visible frame so the loadout is easy to review. The arrow button in the lower-left corner returns to the home screen.
-
-### Curses page
-
-The Curses page follows the same layout and controls as the Blessings page. Hovering shows the highlight and green arrows, while the right-hand details panel displays the Curse name and effect. Curse effects use red text to match their negative in-game presentation. Up to three Curses can be selected, and the lower-left arrow returns to the home screen.
-
-## What players download
-
-The [`dist/`](dist) folder is the complete player package:
-
-- `BattleScarSelector.exe` — the standalone visual selector with the catalogue and artwork embedded inside it.
-- `PassTheFearBattleScarSelector.dll` — the BepInEx plugin that reads the saved selection and applies it in-game.
-
-No compiler, Cpp2IL, source folder, private-assets folder, or separate data files are required for the prebuilt package. BepInEx remains a prerequisite because it is the runtime that loads the plugin.
-
-## Folder guide
-
-- `dist/` — the only folder a normal player needs.
-- `developer/` — optional source and rebuild material. See [`developer/README.md`](developer/README.md).
-- `LICENSE`, `NOTICE.md`, and this README — project and usage information.
-
-The `developer` folder contains:
-
-- `developer/src/` — C# source for the selector window and runtime plugin.
-- `developer/tools/` — PowerShell helpers for building and installing a local build.
-- `developer/private-assets/` — local game-derived inputs used only when rebuilding from source; its contents are ignored by Git.
-- `developer/NuGet.Config` — package restore settings for the developer build.
+![Curses screen](docs/screenshots/curses.png)
 
 ## Requirements
 
