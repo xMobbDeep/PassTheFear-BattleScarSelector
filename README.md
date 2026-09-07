@@ -9,6 +9,8 @@ This repository is source-first. Game-owned art and extracted data are deliberat
 - English visual interface with the game's button and artwork style.
 - Separate Blessings and Curses pages with hover arrows and selection frames.
 - Details panel with the selected Battle Scar's name and effect text.
+- Maximum of three selections per category.
+- IDs and icons are embedded into the built selector executable.
 - Start saves `BattleScarSelector.cfg` beside the plugin DLL; the next run applies it.
 
 ## Requirements
@@ -18,7 +20,7 @@ This repository is source-first. Game-owned art and extracted data are deliberat
 - BepInEx 6 IL2CPP x64 in the game folder for runtime effects.
 - .NET Framework 4.x for the selector build and a .NET SDK for the plugin build.
 
-The official BepInEx IL2CPP guide explains the x64 installation and first-run generation steps: <https://builds.bepinex.dev/projects/bepinex_be>.
+The official BepInEx IL2CPP guide explains the x64 installation and first-run generation steps: <https://github.com/BepInEx/bepinex-docs/blob/master/articles/user_guide/installation/unity_il2cpp.md>.
 
 The selector is a separate Windows program, but it must run beside the plugin DLL so it can save `BattleScarSelector.cfg` in the same plugin directory. The plugin itself is loaded by BepInEx when the game starts.
 
