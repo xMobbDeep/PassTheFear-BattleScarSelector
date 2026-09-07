@@ -1,0 +1,18 @@
+# Build output and local tooling
+bin/
+obj/
+dist/
+.build/
+.vs/
+.idea/
+*.user
+*.suo
+
+# Game-owned/private inputs. These are intentionally kept out of the repository.
+/private-assets/*
+!/private-assets/README.md
+
+# Local game/mod copies and generated research files
+/game/
+/outputs/
+/work/

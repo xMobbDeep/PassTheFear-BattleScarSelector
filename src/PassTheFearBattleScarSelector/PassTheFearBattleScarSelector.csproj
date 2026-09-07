@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>PassTheFearBattleScarSelector</AssemblyName>
+    <GameRoot Condition="'$(GameRoot)' == ''">$(PASS_THE_FEAR_GAME)</GameRoot>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BepInEx.Core"><HintPath>$(GameRoot)\BepInEx\core\BepInEx.Core.dll</HintPath></Reference>
+    <Reference Include="BepInEx.Unity.IL2CPP"><HintPath>$(GameRoot)\BepInEx\core\BepInEx.Unity.IL2CPP.dll</HintPath></Reference>
+    <Reference Include="0Harmony"><HintPath>$(GameRoot)\BepInEx\core\0Harmony.dll</HintPath></Reference>
+    <Reference Include="Il2CppInterop.Runtime"><HintPath>$(GameRoot)\BepInEx\core\Il2CppInterop.Runtime.dll</HintPath></Reference>
+    <Reference Include="GameFrameworkLibrary"><HintPath>$(GameRoot)\BepInEx\interop\GameFrameworkLibrary.dll</HintPath></Reference>
+    <Reference Include="Il2Cppmscorlib"><HintPath>$(GameRoot)\BepInEx\interop\Il2Cppmscorlib.dll</HintPath></Reference>
+    <Reference Include="UnityEngine.CoreModule"><HintPath>$(GameRoot)\BepInEx\interop\UnityEngine.CoreModule.dll</HintPath></Reference>
+    <Reference Include="UnityEngine.ImageConversionModule"><HintPath>$(GameRoot)\BepInEx\interop\UnityEngine.ImageConversionModule.dll</HintPath></Reference>
+    <Reference Include="UnityEngine.UI"><HintPath>$(GameRoot)\BepInEx\interop\UnityEngine.UI.dll</HintPath></Reference>
+    <Reference Include="UnityGameFramework.Runtime"><HintPath>$(GameRoot)\BepInEx\interop\UnityGameFramework.Runtime.dll</HintPath></Reference>
+    <Reference Include="UnityFrameworkWogame.Runtime"><HintPath>$(GameRoot)\BepInEx\interop\UnityFrameworkWogame.Runtime.dll</HintPath></Reference>
+    <Reference Include="Wogame.GameMain"><HintPath>$(GameRoot)\BepInEx\interop\Wogame.GameMain.dll</HintPath></Reference>
+  </ItemGroup>
+</Project>
