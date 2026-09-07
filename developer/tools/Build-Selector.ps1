@@ -1,12 +1,12 @@
 param(
     [Parameter(Mandatory = $true)]
     [string]$GameRoot,
-    [string]$AssetRoot = "private-assets",
+    [string]$AssetRoot = "developer\private-assets",
     [string]$OutputDir = "dist"
 )
 
 $ErrorActionPreference = "Stop"
-$repoRoot = Split-Path -Parent $PSScriptRoot
+$repoRoot = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
 $game = (Resolve-Path $GameRoot).Path
 $assets = (Resolve-Path (Join-Path $repoRoot $AssetRoot)).Path
 $out = Join-Path $repoRoot $OutputDir
@@ -35,7 +35,7 @@ if ($icons.Count -eq 0) { throw "No private icon PNG files found under $assets\i
 
 $csc = Join-Path $env:WINDIR "Microsoft.NET\Framework64\v4.0.30319\csc.exe"
 if (-not (Test-Path -LiteralPath $csc)) { throw "The .NET Framework x64 C# compiler was not found." }
-$selectorSource = Join-Path $repoRoot "src\BattleScarSelector\Program.cs"
+$selectorSource = Join-Path $repoRoot "developer\src\BattleScarSelector\Program.cs"
 $selectorExe = Join-Path $out "BattleScarSelector.exe"
 $cscArgs = @(
     "/nologo", "/target:winexe", ("/out:" + $selectorExe),
@@ -53,13 +53,13 @@ $cscArgs += $selectorSource
 & $csc @cscArgs
 if ($LASTEXITCODE -ne 0) { throw "Selector compilation failed." }
 
-$pluginProject = Join-Path $repoRoot "src\PassTheFearBattleScarSelector\PassTheFearBattleScarSelector.csproj"
-$nugetConfig = Join-Path $repoRoot "NuGet.Config"
+$pluginProject = Join-Path $repoRoot "developer\src\PassTheFearBattleScarSelector\PassTheFearBattleScarSelector.csproj"
+$nugetConfig = Join-Path $repoRoot "developer\NuGet.Config"
 & dotnet restore $pluginProject --configfile $nugetConfig --nologo --property:GameRoot=$game
 if ($LASTEXITCODE -ne 0) { throw "Plugin restore failed." }
 & dotnet build $pluginProject --configuration Release --nologo --no-restore --property:GameRoot=$game
 if ($LASTEXITCODE -ne 0) { throw "Plugin compilation failed." }
-$pluginDll = Join-Path $repoRoot "src\PassTheFearBattleScarSelector\bin\Release\netstandard2.1\PassTheFearBattleScarSelector.dll"
+$pluginDll = Join-Path $repoRoot "developer\src\PassTheFearBattleScarSelector\bin\Release\netstandard2.1\PassTheFearBattleScarSelector.dll"
 if (-not (Test-Path -LiteralPath $pluginDll)) { throw "Compiled plugin DLL was not found." }
 Copy-Item -LiteralPath $pluginDll -Destination (Join-Path $out "PassTheFearBattleScarSelector.dll") -Force
 

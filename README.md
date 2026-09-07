@@ -1,67 +1,86 @@
 # Pass The Fear Battle Scar Selector
 
-A Windows selector for choosing up to three Blessings and three Curses before the next run of *Pass The Fear*. The selector shows the local Battle Scar icons and descriptions, then writes the six selected IDs to the configuration read by the BepInEx plugin.
+Choose a complete Battle Scar loadout for *Pass The Fear* before a run. The Windows selector presents every available Blessing and Curse with its icon and effect text, then the companion BepInEx plugin applies the six selected IDs when the next run starts.
 
-This repository is source-first. Game-owned art and extracted data are deliberately kept out of Git. Each user supplies those files from their own game installation when building the selector.
+The repository is organized for players first. The ready-to-use files are in [`dist/`](dist); source and rebuild material is kept under [`developer/`](developer).
 
-## Features
+## Quick start for players
 
-- English visual interface with the game's button and artwork style.
-- Separate Blessings and Curses pages with hover arrows and selection frames.
-- Details panel with the selected Battle Scar's name and effect text.
-- Maximum of three selections per category.
-- IDs and icons are embedded into the built selector executable.
-- Start saves `BattleScarSelector.cfg` beside the plugin DLL; the next run applies it.
+1. Install **BepInEx 6 IL2CPP x64** in your own Windows copy of *Pass The Fear*, then launch the game once so BepInEx can finish its first-run setup. The [official BepInEx IL2CPP guide](https://github.com/BepInEx/bepinex-docs/blob/master/articles/user_guide/installation/unity_il2cpp.md) covers this step.
+2. Download these two files from [`dist/`](dist):
+   - [`BattleScarSelector.exe`](dist/BattleScarSelector.exe)
+   - [`PassTheFearBattleScarSelector.dll`](dist/PassTheFearBattleScarSelector.dll)
+3. Create the folder `BepInEx/plugins/PassTheFearBattleScarSelector` inside the game folder and place both files there.
+4. Run `BattleScarSelector.exe` from that folder while the game is closed.
+5. Select three Blessings and three Curses, then press **Start**. The selector saves the loadout beside the plugin DLL.
+6. Launch the game normally. BepInEx reads the saved loadout at the beginning of the next run.
+
+The selector does not launch the game for you. The executable already contains the catalogue, IDs, descriptions, and icons, so players do not need to download a separate icons folder, CSV, or TSV file.
+
+## The three screens
+
+### Home screen
+
+The entrance screen uses the game's artwork as its background and places three centered game-style buttons in a simple flow:
+
+- **Blessings** opens the Blessings selection page.
+- **Curses** opens the Curses selection page.
+- **Start** stays locked until exactly three Blessings and three Curses have been selected.
+
+Returning from either selection page keeps the choices visible to the selector. When Start is pressed, the six IDs are written to `BattleScarSelector.cfg`; the game is then started separately so the plugin can apply them.
+
+### Blessings page
+
+The Blessings page uses a black background and shows the complete Blessing icon catalogue. Moving the pointer over an icon highlights it and shows the game's four green directional arrows. The details panel on the right displays the icon, name, and positive effect text. A left click selects or removes a Blessing, with a maximum of three selections; selected icons keep a visible frame so the loadout is easy to review. The arrow button in the lower-left corner returns to the home screen.
+
+### Curses page
+
+The Curses page follows the same layout and controls as the Blessings page. Hovering shows the highlight and green arrows, while the right-hand details panel displays the Curse name and effect. Curse effects use red text to match their negative in-game presentation. Up to three Curses can be selected, and the lower-left arrow returns to the home screen.
+
+## What players download
+
+The [`dist/`](dist) folder is the complete player package:
+
+- `BattleScarSelector.exe` — the standalone visual selector with the catalogue and artwork embedded inside it.
+- `PassTheFearBattleScarSelector.dll` — the BepInEx plugin that reads the saved selection and applies it in-game.
+
+No compiler, Cpp2IL, source folder, private-assets folder, or separate data files are required for the prebuilt package. BepInEx remains a prerequisite because it is the runtime that loads the plugin.
+
+## Folder guide
+
+- `dist/` — the only folder a normal player needs.
+- `developer/` — optional source and rebuild material. See [`developer/README.md`](developer/README.md).
+- `LICENSE`, `NOTICE.md`, and this README — project and usage information.
+
+The `developer` folder contains:
+
+- `developer/src/` — C# source for the selector window and runtime plugin.
+- `developer/tools/` — PowerShell helpers for building and installing a local build.
+- `developer/private-assets/` — local game-derived inputs used only when rebuilding from source; its contents are ignored by Git.
+- `developer/NuGet.Config` — package restore settings for the developer build.
 
 ## Requirements
 
+For the prebuilt player package:
+
 - Windows x64.
 - A legally installed Windows x64 copy of *Pass The Fear*.
-- BepInEx 6 IL2CPP x64 in the game folder for runtime effects.
-- .NET Framework 4.x for the selector build and a .NET SDK for the plugin build.
+- BepInEx 6 IL2CPP x64 installed in that game folder.
+- .NET Framework 4.8 or later for the standalone selector.
 
-The official BepInEx IL2CPP guide explains the x64 installation and first-run generation steps: <https://github.com/BepInEx/bepinex-docs/blob/master/articles/user_guide/installation/unity_il2cpp.md>.
+## Optional: build from source
 
-The selector is a separate Windows program, but it must run beside the plugin DLL so it can save `BattleScarSelector.cfg` in the same plugin directory. The plugin itself is loaded by BepInEx when the game starts.
+Source builds are intended for contributors who want to update the catalogue, artwork, or plugin. Follow [`developer/README.md`](developer/README.md) and provide inputs from your own game copy. The build script embeds those local assets into a new selector executable and writes the two player files to `dist/`.
 
-## For players
+The repository intentionally does not include the game executable, `GameAssembly.dll`, BepInEx files, generated IL2CPP interop assemblies, or extracted game data. Those remain in each contributor's own local game installation; see [`NOTICE.md`](NOTICE.md) for ownership and third-party notices.
 
-Download the prebuilt files from [`dist/`](dist) and copy `BattleScarSelector.exe` and `PassTheFearBattleScarSelector.dll` into `BepInEx/plugins/PassTheFearBattleScarSelector` in your game folder. The executable already contains the Battle Scar catalogue, descriptions, IDs, and icons, so no separate asset files are needed. Install BepInEx IL2CPP x64 first, then run the selector, choose three Blessings and three Curses, and press Start before launching the game.
+## Troubleshooting
 
-## Build from source
+- **Start is locked:** select three Blessings and three Curses first. A partial loadout cannot be saved.
+- **The game starts but the loadout is unchanged:** confirm that both files are in `BepInEx/plugins/PassTheFearBattleScarSelector`, then launch the selector from that same folder and start the game after saving.
+- **The selector cannot find the plugin folder:** do not run the executable from a separate download folder; keep it beside `PassTheFearBattleScarSelector.dll`.
+- **The selector does not open:** install or repair .NET Framework 4.8, then try again while the game is closed.
 
-1. Install BepInEx in your own game copy and run the game once so its IL2CPP interop files exist.
-2. Create `private-assets` inputs from your own local game/mod work:
+## License
 
-   - `private-assets/home-background.png`
-   - `private-assets/button-frame.png`
-   - `private-assets/battle_scar_ids.csv`
-   - `private-assets/battle_scar_effects.tsv`
-   - `private-assets/icons/<id>.png`
-
-3. From the repository root, run:
-
-   ```powershell
-   .\tools\Build-Selector.ps1 -GameRoot "C:\Games\Pass The Fear"
-   ```
-
-The script embeds the private catalogue and icons into `BattleScarSelector.exe`, builds the plugin against the BepInEx/interop files in the selected game folder, and places both outputs in `dist/`.
-
-## Install a build
-
-Run the installer helper from the repository root after building:
-
-```powershell
-.\tools\Install-Selector.ps1 -GameRoot "C:\Games\Pass The Fear"
-```
-
-It copies the two files in `dist/` into `BepInEx/plugins/PassTheFearBattleScarSelector`. Run `BattleScarSelector.exe`, make six selections, and press Start. The selector does not launch the game; the saved configuration is consumed when the next run begins.
-
-## What is intentionally absent
-
-The repository does not contain the game executable, `GameAssembly.dll`, generated IL2CPP interop assemblies, extracted icons, background art, or extracted Battle Scar data. Those files belong to the game installation or are generated from it. They are required only as local build inputs and are ignored by Git.
-
-## Project layout
-
-`src/BattleScarSelector` contains the standalone Windows selector. `src/PassTheFearBattleScarSelector` contains the runtime plugin. `tools/Build-Selector.ps1` is the Windows build script. `private-assets` is local-only input and is ignored by Git.
-
+The project source is released under the MIT License. Game code and artwork remain the property of their respective owners. See [`NOTICE.md`](NOTICE.md) for the BepInEx notice and asset details.

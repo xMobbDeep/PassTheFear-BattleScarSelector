@@ -9,11 +9,10 @@ obj/
 *.suo
 
 # Game-owned/private inputs. These are intentionally kept out of the repository.
-/private-assets/*
-!/private-assets/README.md
+/developer/private-assets/*
+!/developer/private-assets/README.md
 
 # Local game/mod copies and generated research files
-/game/
-/outputs/
-/work/
-
+/developer/game/
+/developer/outputs/
+/developer/work/

@@ -5,7 +5,7 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
-$repoRoot = Split-Path -Parent $PSScriptRoot
+$repoRoot = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
 $game = (Resolve-Path $GameRoot).Path
 $source = (Resolve-Path (Join-Path $repoRoot $BuildOutput)).Path
 $target = Join-Path $game "BepInEx\plugins\PassTheFearBattleScarSelector"
