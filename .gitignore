@@ -1,7 +1,7 @@
 # Build output and local tooling
 bin/
 obj/
-dist/
+# The prebuilt player files in dist/ are intentionally tracked.
 .build/
 .vs/
 .idea/
@@ -16,3 +16,4 @@ dist/
 /game/
 /outputs/
 /work/
+
