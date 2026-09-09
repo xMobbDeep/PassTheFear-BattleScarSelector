@@ -2,8 +2,6 @@
 
 Choose a complete Battle Scar loadout for *Pass The Fear* before a run. The selector presents every available Blessing and Curse with its icon and effect text, then the companion BepInEx plugin applies the six selected IDs when the next run starts.
 
-The repository is organized for players first. The ready-to-use files are in [`dist/`](dist); source and rebuild material is kept under [`developer/`](developer).
-
 ## Quick start for players
 
 1. Install **BepInEx 6 IL2CPP x64** in your own *Pass The Fear* folder, then launch the game once so BepInEx can finish its first-run setup.[official BepInEx IL2CPP](https://builds.bepinex.dev/projects/bepinex_be)
